@@ -1,0 +1,29 @@
+
+https://cnodejs.org/topic/5b21f22e29e6e510415b2ab2
+git clone https://github.com/supermoonie/winio4J.git
+
+
+bcdedit /set testsigning on
+
+IN_IO = WinIo.INSTANCE;
+WIN_IO.InitializeWinIo(new WString(//desktop/WinIo64.sys)
+ Integer vk =0x03
+KBCWait4IBE(){
+        int val;
+        do {
+            Pointer p = new Memory(8);
+            if (!WIN_IO.GetPortVal(0x64, p, 1)) {
+               console.log("Cannot Get The Port!");
+            }
+            val = p.getInt(0);
+        } while ((0x2 & val) > 0);
+}
+ KBCWait4IBE();
+        WIN_IO.SetPortVal(0x64, 0xd2, 1);
+        KBCWait4IBE();
+        WIN_IO.SetPortVal(0x60, key, 1);
+   Thread.sleep(sleepTime);
+  KBCWait4IBE();
+        WIN_IO.SetPortVal(0x64, 0xd2, 1);
+        KBCWait4IBE();
+        WIN_IO.SetPortVal(0x60, (key | 0x80), 1);
